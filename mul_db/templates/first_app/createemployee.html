@@ -1,0 +1,24 @@
+{% extends 'first_app/base.html' %}
+
+{% block body %}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 >Create Employee</h1>   
+    </div>
+</div>
+
+<div class="container">
+    <div class="jumbotron">
+        <form action="{% url 'first_app:createmployee' %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" name="SUBMIT">
+        </form>   
+    </div>
+
+    
+</div>
+
+
+{% endblock %}

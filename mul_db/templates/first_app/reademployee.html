@@ -1,0 +1,26 @@
+{% extends 'first_app/base.html' %}
+
+{% block body %}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 >Read Employee</h1>   
+    </div>
+</div>
+
+<div class="container">
+    <div class="jumbotron">
+        <form action="{% url 'first_app:reademployee' %}" method="GET">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" name="read">
+        </form>   
+    </div>
+    {% if Flag %}
+        <h1>Employee name: {{employee_name}}</h1>
+        <h1>Employee Id: {{employee_id}}</h1>
+    {% else %}
+    {% endif %}
+</div>
+
+{% endblock %}
