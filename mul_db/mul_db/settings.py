@@ -11,10 +11,12 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
+#from mul_db.second_app.router import AppRouter
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR=Path.joinpath(BASE_DIR,'templates')
+#ROUTER_PATH=Path.joinpath(BASE_DIR,"mul_db","router")
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -80,9 +82,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
-    'secondary':{
+    'second_db':{
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Employee_database',
+        'NAME': 'Student_database',
         'USER': 'root',
         'PASSWORD': 'Hut89Gor@',
         'HOST': 'localhost',   # Set to your MySQL server's host
@@ -91,6 +93,7 @@ DATABASES = {
     }
 }
 
+DATABASE_ROUTERS = ["second_app.router.AppRouter"]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

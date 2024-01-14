@@ -9,22 +9,31 @@ def index(request):
 
 
 def createmployee(request):
-    
+    employee_name=""
+    Flag=False
+    message=""
+    employee_id=""
     if(request.method=='POST'):
         form=Employee_create_form(data=request.POST)
         if(form.is_valid()):
             form.save()
+            employee_id=request.POST['employee_id']
+            employee_name=request.POST['employee_name']
+            Flag=True
+            message="Succesfully Created"
         else:
             print('-------Employee Data Not Saved--------')
+            message="Not Succesfully"
     else:
         form=Employee_create_form()
-    return render(request,'first_app/createemployee.html',{'form':form})
+    return render(request,'first_app/createemployee.html',{"Flag":Flag,'form':form,'employee_id':employee_id,"employee_name":employee_name ,"message":message})
 
 
 def reademployee(request):
     Flag=False
     employee_name=""
     employee_id=''
+    message=""
     print('request.GET',request.GET)
     if(request.method=='GET'):
         employee_id = request.GET.get('employee_id', None)
@@ -44,12 +53,14 @@ def reademployee(request):
             employee_name=query.employee_name
             Flag=True
             print("--------",employee_name,employee_id,"--------")
+            message=" Succesfully Found"
         else:
                 form=Employee_read_form()
+                message="NOT FOUND"
     
     else:
             form=Employee_read_form()
             Flag=False
      
-    return render(request,'first_app/reademployee.html',{"Flag":Flag,'form':form,'employee_id':employee_id,"employee_name":employee_name})
+    return render(request,'first_app/reademployee.html',{"Flag":Flag,'form':form,'employee_id':employee_id,"employee_name":employee_name,"message":message})
 

@@ -4,13 +4,13 @@
 
 <div class="container">
     <div class="jumbotron">
-        <h1 >Create Employee</h1>   
+        <h1>Create Student Details</h1>   
     </div>
 </div>
 
 <div class="container">
     <div class="jumbotron">
-        <form action="{% url 'first_app:createmployee' %}" method="POST">
+        <form action="{% url 'second_app:createstudent' %}" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" name="SUBMIT">
@@ -22,8 +22,8 @@
     <div class="jumbotron">
         {% if Flag %}
             <p>{{message}}</p>
-            <p>Employee name: {{employee_name}}</p>
-            <p>Employee Id: {{employee_id}}</p>
+            <p>Student name: {{student_name}}</p>
+            <p>Student Id: {{student_id}}</p>
         {% else %}
             <p>{{message}}</p>
         {% endif %}
